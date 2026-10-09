@@ -1,4 +1,4 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>قيمة - خدمات مكتبية بمعايير احترافية</title><meta name="theme-color" content="#2F6B54"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232F6B54'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23fff' font-family='serif'%3E%D9%82%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{--green:#2F6B54;--green-dp:#215140;--sage:#7FA893;--sage-lt:#CFE0D6;--sage-pale:#EDF4F0;--clay:#C4784E;--clay-lt:#E9C5AC;--clay-pale:#FAEFE6;--sand:#F2EAD9;--cream:#FDFAF4;--paper:#FFFFFF;--ink:#2A342E;--muted:#77837C;--hair:#E8E2D6}
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><!-- Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRP2BD8C4N"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZRP2BD8C4N',{send_page_view:false});</script><meta name="viewport" content="width=device-width,initial-scale=1"><title>قيمة - خدمات مكتبية بمعايير احترافية</title><meta name="theme-color" content="#2F6B54"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232F6B54'/%3E%3Ctext x='32' y='46' font-size='38' text-anchor='middle' fill='%23fff' font-family='serif'%3E%D9%82%3C/text%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet"><style>:root{--green:#2F6B54;--green-dp:#215140;--sage:#7FA893;--sage-lt:#CFE0D6;--sage-pale:#EDF4F0;--clay:#C4784E;--clay-lt:#E9C5AC;--clay-pale:#FAEFE6;--sand:#F2EAD9;--cream:#FDFAF4;--paper:#FFFFFF;--ink:#2A342E;--muted:#77837C;--hair:#E8E2D6}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;background:var(--cream);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased;padding-bottom:84px}
@@ -583,4 +583,11 @@ function route(){
   }else{m.style.display='';w.style.display='none';}
 }
 window.addEventListener('hashchange',route);route();
+(function(){
+  var N={cv:'السيرة الذاتية',doc:'المستندات الرسمية',cat:'الكتالوج',logo:'تصميم شعار'};
+  function pv(){try{var a=/^#\/atlaq/.test(location.hash);gtag('event','page_view',{page_title:a?'أطلق':'الرئيسية',page_path:a?'/atlaq':'/',page_location:location.origin+(a?'/atlaq':'/')});}catch(e){}}
+  window.addEventListener('hashchange',pv);pv();
+  if(typeof openS==='function'){var o=openS;openS=function(k){try{gtag('event','open_service',{service:N[k]||k});}catch(e){}return o.apply(this,arguments);};}
+  if(typeof send==='function'){var s0=send;send=function(k){try{gtag('event','send_order',{service:N[k]||k});}catch(e){}return s0.apply(this,arguments);};}
+})();
 </script></body></html>
