@@ -128,6 +128,26 @@ footer a{color:var(--clay-lt);text-decoration:none;font-weight:600}
 .fdoc .fcopy,.fdoc a{font:inherit;font-size:12.5px;background:none;border:0;border-right:1px solid var(--hair);padding:0 0 0 0;padding-right:8px;color:var(--clay);cursor:pointer;text-decoration:none}
 .trust .thow{flex-basis:100%;font-size:12.5px;color:var(--muted);line-height:1.8}
 .trust .thow bdi{color:var(--green-dp);font-weight:700;direction:ltr;unicode-bidi:isolate}
+
+.lq-grid{display:grid;gap:10px}
+.lq-g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.lq-g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:380px){.lq-g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lq-card{position:relative;cursor:pointer;display:flex;margin:0}
+.lq-card input{position:absolute;opacity:0;width:1px;height:1px;padding:0;border:0}
+.lq-card .lq-in{flex:1;display:flex;flex-direction:column;gap:4px;border:1px solid var(--hair);background:var(--cream);padding:8px;transition:border-color .15s,background .15s}
+.lq-card:hover .lq-in{border-color:var(--sage)}
+.lq-card input:checked+.lq-in{border-color:var(--clay);background:var(--clay-pale);box-shadow:0 0 0 1px var(--clay)}
+.lq-card input:focus-visible+.lq-in{outline:2px solid var(--clay);outline-offset:2px}
+.lq-pic{display:block;line-height:0;border:1px solid var(--hair);overflow:hidden}
+.lq-pic svg{width:100%;height:auto;display:block}
+.lq-card b{font-family:Amiri,serif;font-size:17px;color:var(--green-dp);line-height:1.4;margin-top:2px}
+.lq-card small{font-size:11.5px;color:var(--muted);line-height:1.6}
+.lq-sw{display:block;height:46px;border:1px solid var(--hair)}
+.lq-w{background:#FFFFFF}.lq-d{background:linear-gradient(135deg,#141B33,#07070C)}.lq-a{background:linear-gradient(90deg,#FFFFFF 50%,#141B33 50%)}
+.lq-note{font-size:12.5px;color:var(--green-dp);background:var(--sage-pale);border-inline-start:3px solid var(--green);padding:8px 12px;line-height:1.7;margin-top:10px}
+.lq-hint{margin:-2px 0 10px}
+@media (prefers-reduced-motion:reduce){.lq-card .lq-in{transition:none}}
 </style></head><body><div id="vMain" dir="rtl">
 <div class="top"><div class="wrap in"><div class="wm">قيمة<span>وثائق بمعايير احترافية</span></div><div class="tag-off">خدمات قيمة</div></div></div><section class="hero">
   <div class="wrap">
@@ -357,7 +377,16 @@ footer a{color:var(--clay-lt);text-decoration:none;font-weight:600}
       <div class="f"><label>هل عندك شعار حالياً؟</label><select id="logo_hasLogo"><option value="لا يوجد شعار حالي - شعار جديد">لا يوجد شعار حالي - شعار جديد</option><option value="يوجد شعار وأريد تطويره/تحسينه">يوجد شعار وأريد تطويره/تحسينه</option></select>
         <p class="hint" style="font-size:12.5px;color:var(--muted);margin-top:6px">إذا عندك شعار حالي، أرفق صورته عند التواصل عبر واتساب</p></div>
       <div class="f"><label>الألوان المفضلة</label><input type="text" id="logo_colors" placeholder="مثال: أزرق وذهبي، أو اترك القرار لنا"></div>
-      <div class="f"><label>الأسلوب المفضل للشعار</label><select id="logo_style"><option value="عصري وبسيط">عصري وبسيط</option><option value="كلاسيكي وفخم">كلاسيكي وفخم</option><option value="جريء وملفت">جريء وملفت</option><option value="غير متأكد - اقترحوا لي">غير متأكد - اقترحوا لي</option></select></div>
+      <div class="f"><label>خلفية الشعار</label><p class="hint lq-hint">اختر الخلفية اللي بينحط عليها شعارك، وبنعرض لك الستايلات اللي تناسبها</p>
+        <div class="lq-grid lq-g3" id="lq_bg" role="radiogroup" aria-label="خلفية الشعار">
+          <label class="lq-card"><input type="radio" name="logo_bg" id="logo_bg_w" value="بيضاء" checked><span class="lq-in"><span class="lq-sw lq-w"></span><b>بيضاء</b><small>للمطبوعات والمواقع</small></span></label>
+          <label class="lq-card"><input type="radio" name="logo_bg" id="logo_bg_d" value="داكنة"><span class="lq-in"><span class="lq-sw lq-d"></span><b>داكنة</b><small>للستايلات الفخمة واللامعة</small></span></label>
+          <label class="lq-card"><input type="radio" name="logo_bg" id="logo_bg_a" value="اختاروا لي"><span class="lq-in"><span class="lq-sw lq-a"></span><b>اختاروا لي</b><small>نختار الأنسب لستايلك</small></span></label>
+        </div><p class="lq-note">نسلّم الشعار على نفس الخلفية اللي تختارها.</p></div>
+      <div class="f"><label>ستايل الشعار</label><p class="hint lq-hint">الصور توضح لك تقريبًا كيف بيطلع شعارك. لو محتار اختر «اتركه علينا» <span id="lq_count"></span></p>
+        <div class="lq-grid lq-g2" id="lq_style" role="radiogroup" aria-label="ستايل الشعار"></div></div>
+      <div class="f"><label>نوع الشعار</label><p class="hint lq-hint">تقدر تختار أكثر من نوع، ونصمم لك أفكار منها</p>
+        <div class="lq-grid lq-g3" id="lq_type"></div></div>
       <div class="f"><label>هل تحب يحتوي الشعار على رمز/أيقونة معينة؟</label><textarea id="logo_iconIdea" placeholder="مثال: نخلة، حرف من الاسم، شكل هندسي... (اختياري)"></textarea></div>
       <div class="f"><label>أمثلة أو شعارات تعجبك</label><textarea id="logo_examples" placeholder="وصف أو أسماء علامات تجارية شعارها يعجبك (اختياري)"></textarea></div>
     </div>
@@ -556,7 +585,7 @@ function summary(k){
     }
     s="طلب تصميم شعار - قيمة\n\n";
     s+=L("اسم النشاط أو العلامة التجارية",v('logo_brandName'))+L("مجال النشاط",v('logo_field'))+L("رقم التواصل",v('logo_phone'));
-    s+=L("هل عندك شعار حالياً؟",sel('logo_hasLogo'))+L("الألوان المفضلة",v('logo_colors'))+L("الأسلوب المفضل للشعار",sel('logo_style'));
+    s+=L("هل عندك شعار حالياً؟",sel('logo_hasLogo'))+L("الألوان المفضلة",v('logo_colors'))+L("خلفية الشعار",radio('logo_bg'))+L("ستايل الشعار",lqStyleText())+L("نوع الشعار",lqTypes());
     s+=L("فكرة الرمز/الأيقونة",v('logo_iconIdea'))+L("أمثلة أو شعارات تعجبك",v('logo_examples'))+L("صيغة التسليم",delivery)+L("ملاحظات",v('logo_notes'));
     s+="\nالسعر التقديري: "+p4+" ريال\n";
   }
@@ -620,4 +649,51 @@ window.addEventListener('hashchange',route);route();
   if(typeof openS==='function'){var o=openS;openS=function(k){try{gtag('event','open_service',{service:N[k]||k});}catch(e){}return o.apply(this,arguments);};}
   if(typeof send==='function'){var s0=send;send=function(k){try{gtag('event','send_order',{service:N[k]||k});}catch(e){}return s0.apply(this,arguments);};}
 })();
-</script></body></html>
+</script><script>
+const LQ_T='font-family="Reem Kufi,Amiri,serif" font-weight="700" text-anchor="middle"';
+const LQ_W=s=>`<svg viewBox="0 0 160 100" aria-hidden="true">${s}</svg>`;
+const lqGold=(id,dark)=>`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">${(dark?["#FFF3C4","#E6B94A","#A8781E","#F5D77A","#7A5512"]:["#E6B94A","#B8862A","#7A5512","#C9972E","#5E400C"]).map((c,i)=>`<stop offset="${i/4}" stop-color="${c}"/>`).join("")}</linearGradient>`;
+
+/* each style: name, short line, which backgrounds it suits, preview per background */
+const LQ_STYLES=[
+ {v:"تلقائي حسب الإجابات",n:"اتركه علينا",d:"نختار الستايل المناسب",ok:["w","d"],svg:b=>{const bg=b==="d"?"#141B33":"#F4F1EA",c=b==="d"?"#9FB3C8":"#9AA59E",t=b==="d"?"#E8EDF3":"#4A574F";
+   return LQ_W(`<rect width="160" height="100" fill="${bg}"/><circle cx="80" cy="42" r="24" fill="none" stroke="${c}" stroke-width="2" stroke-dasharray="5 5"/><path d="M80 28l4 10 10 4-10 4-4 10-4-10-10-4 10-4z" fill="#C46A3C"/><circle cx="98" cy="28" r="3" fill="#C46A3C"/><text x="80" y="88" font-size="13" fill="${t}" ${LQ_T}>نختاره لك</text>`);}},
+ {v:"مسطح حديث نظيف",n:"مسطح حديث",d:"أشكال بسيطة وألوان صريحة",ok:["w","d"],svg:b=>{const d=b==="d";
+   return LQ_W(`<rect width="160" height="100" fill="${d?"#1B2430":"#FFFFFF"}"/><rect x="58" y="20" width="26" height="26" rx="4" fill="${d?"#6FA0FF":"#2F6FED"}"/><circle cx="96" cy="33" r="13" fill="#FFB020"/><path d="M71 46l13 16H58z" fill="${d?"#3DDC9A":"#16B47E"}"/><text x="80" y="90" font-size="14" fill="${d?"#FFFFFF":"#1B2430"}" ${LQ_T}>شعارك</text>`);}},
+ {v:"ذهبي ملكي",n:"ذهبي ملكي",d:"ذهب وتاج وفخامة",ok:["w","d"],svg:b=>{const d=b==="d",id="g"+b;
+   return LQ_W(`<defs>${lqGold(id,d)}</defs><rect width="160" height="100" fill="${d?"#141B33":"#FFFFFF"}"/><circle cx="80" cy="40" r="26" fill="none" stroke="url(#${id})" stroke-width="2"/><circle cx="80" cy="40" r="22" fill="none" stroke="url(#${id})" stroke-width=".8"/><path d="M66 48l-3-16 9 7 8-12 8 12 9-7-3 16z" fill="url(#${id})"/><text x="80" y="91" font-size="14" fill="url(#${id})" ${LQ_T}>شعارك</text>`);}},
+ {v:"عتيق كلاسيكي",n:"عتيق كلاسيكي",d:"ختم دائري بطابع قديم",ok:["w"],svg:()=>LQ_W(`<rect width="160" height="100" fill="#FFFFFF"/><circle cx="80" cy="44" r="32" fill="none" stroke="#6B3E26" stroke-width="2.5"/><circle cx="80" cy="44" r="26" fill="none" stroke="#6B3E26" stroke-width="1"/><path d="M66 31h28M66 56h28" stroke="#6B3E26" stroke-width="1"/><circle cx="54" cy="44" r="2" fill="#6B3E26"/><circle cx="106" cy="44" r="2" fill="#6B3E26"/><text x="80" y="49" font-size="12" fill="#6B3E26" ${LQ_T}>شعارك</text><text x="80" y="94" font-size="9" fill="#8A5A3B" ${LQ_T} letter-spacing="2">EST · ٢٠٢٦</text>`)},
+ {v:"فخم معدني لامع",n:"فخم معدني",d:"لمعة كروم على داكن",ok:["d"],svg:()=>LQ_W(`<defs><linearGradient id="lqM" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#D7DBE0"/><stop offset=".5" stop-color="#8A9098"/><stop offset=".7" stop-color="#EEF0F2"/><stop offset="1" stop-color="#5F656C"/></linearGradient><radialGradient id="lqMb"><stop offset="0" stop-color="#2A2C31"/><stop offset="1" stop-color="#0B0B0D"/></radialGradient></defs><rect width="160" height="100" fill="url(#lqMb)"/><path d="M80 14l24 9v17c0 14-10 23-24 28-14-5-24-14-24-28V23z" fill="url(#lqM)"/><path d="M68 48l22-22 4 4-22 22z" fill="#E0281E"/><text x="80" y="91" font-size="14" fill="url(#lqM)" ${LQ_T}>شعارك</text>`)},
+ {v:"نيون مضيء",n:"نيون مضيء",d:"خطوط مضيئة على أسود",ok:["d"],svg:()=>LQ_W(`<defs><filter id="lqN" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><rect width="160" height="100" fill="#07070C"/><g filter="url(#lqN)" fill="none" stroke-width="2.5" stroke-linecap="round"><circle cx="80" cy="40" r="22" stroke="#2EF2FF"/><path d="M68 46l8-14 6 9 5-6 6 11" stroke="#FF3DCB"/></g><text x="80" y="90" font-size="14" fill="#C9FBFF" filter="url(#lqN)" ${LQ_T}>شعارك</text>`)}
+];
+const LQ_TYPES=[
+ ["رمز واسم","أيقونة مع الاسم",`<circle cx="30" cy="30" r="12" fill="#C4784E"/><rect x="48" y="22" width="44" height="7" rx="2" fill="#215140"/><rect x="48" y="33" width="30" height="5" rx="2" fill="#7FA893"/>`],
+ ["حرف أول","مونوقرام من أول حرف",`<circle cx="60" cy="30" r="20" fill="none" stroke="#215140" stroke-width="2.5"/><text x="60" y="40" font-size="26" fill="#C4784E" ${LQ_T}>ق</text>`],
+ ["نصي","الاسم بخط مميز فقط",`<text x="60" y="40" font-size="26" fill="#215140" ${LQ_T}>قيمة</text>`],
+ ["ختم أو إطار","الاسم داخل دائرة أو درع",`<path d="M60 8l20 7v14c0 12-8 19-20 23-12-4-20-11-20-23V15z" fill="none" stroke="#215140" stroke-width="2.5"/><text x="60" y="38" font-size="14" fill="#C4784E" ${LQ_T}>قيمة</text>`],
+ ["رمز فقط","أيقونة بدون كتابة",`<path d="M60 10c12 10 14 22 0 40-14-18-12-30 0-40z" fill="#C4784E"/><path d="M60 22v24" stroke="#FDFAF4" stroke-width="2"/>`]
+];
+
+
+function lqEsc(x){return String(x).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function lqBg(){var r=radio('logo_bg');return r==="بيضاء"?"w":r==="داكنة"?"d":"a";}
+function lqDraw(){
+  var b=lqBg(),box=document.getElementById('lq_style'); if(!box)return;
+  var prev=radio('logo_styleV');
+  var list=LQ_STYLES.filter(function(s){return b==="a"||s.ok.indexOf(b)>-1;});
+  var keep=list.some(function(s){return s.v===prev;})?prev:LQ_STYLES[0].v;
+  box.innerHTML=list.map(function(s,i){
+    var pb=b!=="a"?b:(s.v==="ذهبي ملكي"||s.ok.indexOf("w")<0?"d":"w");
+    return '<label class="lq-card"><input type="radio" name="logo_styleV" id="logo_st_'+i+'" value="'+lqEsc(s.v)+'"'+(s.v===keep?' checked':'')+'><span class="lq-in"><span class="lq-pic">'+s.svg(pb)+'</span><b>'+lqEsc(s.n)+'</b><small>'+lqEsc(s.d)+'</small></span></label>';}).join("");
+  document.getElementById('lq_count').textContent=b==="a"?"":"("+["٠","١","٢","٣","٤","٥","٦"][list.length]+" ستايلات تناسب الخلفية "+(b==="w"?"البيضاء":"الداكنة")+")";
+}
+function lqStyleText(){var v=radio('logo_styleV');return v==="تلقائي حسب الإجابات"?"اتركه علينا":v;}
+function lqTypes(){var a=document.querySelectorAll('#lq_type input:checked'),r=[];for(var i=0;i<a.length;i++)r.push(a[i].value);return r.join("، ");}
+(function(){
+  var t=document.getElementById('lq_type'); if(!t)return;
+  t.innerHTML=LQ_TYPES.map(function(x,i){return '<label class="lq-card"><input type="checkbox" id="logo_tp_'+i+'" value="'+lqEsc(x[0])+'"><span class="lq-in"><span class="lq-pic"><svg viewBox="0 0 120 60" aria-hidden="true"><rect width="120" height="60" fill="#FDFAF4"/>'+x[2]+'</svg></span><b>'+lqEsc(x[0])+'</b><small>'+lqEsc(x[1])+'</small></span></label>';}).join("");
+  document.getElementById('lq_bg').addEventListener('change',lqDraw);
+  lqDraw();
+})();
+</script>
+</body></html>
